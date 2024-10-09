@@ -6,6 +6,8 @@ import requests
 from openpyxl import load_workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
+# ai generated script
+
 GITHUB_TOKEN = os.getenv("GITHUB_API_TOKEN")
 
 if not GITHUB_TOKEN:
@@ -61,10 +63,7 @@ print(f"Total repositories fetched: {len(repos)}")
 repo_list = []
 for repo in repos:
     repo_data = {
-        "id": repo["id"],
-        "name": repo["name"],
-        "full_name": repo["full_name"],
-        "description": repo["description"],
+        "description": f'{repo["full_name"]}: {repo["description"]}',
         "stargazers_count": repo.get("stargazers_count", "N/A"),
         "forks_count": repo.get("forks_count", "N/A"),
         "language": repo.get("language", "N/A"),
@@ -74,6 +73,8 @@ for repo in repos:
         "created_at": repo["created_at"],
         "pushed_at": repo["pushed_at"],
         "html_url": repo["html_url"],
+        "id": repo["id"],
+        "full_name": repo["full_name"],
     }
     repo_list.append(repo_data)
 
